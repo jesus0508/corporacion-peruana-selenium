@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import pe.edu.unmsm.corporacion.dto.ClienteDTO;
+import pe.edu.unmsm.corporacion.dto.ProveedorDTO;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,6 +41,26 @@ public class ExcelUtil {
                 }
                 clienteDto = new ClienteDTO(clientData);
                 objects = new Object[]{clienteDto, row.getCell(lastRow).getStringCellValue()};
+                data.add(objects);
+            }
+        }
+        return data;
+    }
+
+    public LinkedList<Object[]> readProveedorData(String sheetName, int lastRow) {
+        XSSFSheet xssfSheet = xssfWorkbook.getSheet(sheetName);
+        LinkedList<Object[]> data = new LinkedList<>();
+        ArrayList<String> clientData;
+        ProveedorDTO proveedorDTO;
+        Object[] objects;
+        for (Row row : xssfSheet) {
+            clientData = new ArrayList<>();
+            if (!firstCellIsEmpty(row)) {
+                for (Cell cell : row) {
+                    clientData.add(getStringValue(cell));
+                }
+                proveedorDTO = new ProveedorDTO(clientData);
+                objects = new Object[]{proveedorDTO, row.getCell(lastRow).getStringCellValue()};
                 data.add(objects);
             }
         }

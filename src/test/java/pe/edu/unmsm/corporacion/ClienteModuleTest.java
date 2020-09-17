@@ -17,8 +17,8 @@ import static org.junit.Assert.*;
 import static org.testng.FileAssert.fail;
 
 public class ClienteModuleTest {
-    //public final String DOMAIN = "http://ec2-52-91-116-50.compute-1.amazonaws.com/";
-    public final String DOMAIN = "http://corporacion-peruana.test/";
+    public final String DOMAIN = "http://ec2-52-91-116-50.compute-1.amazonaws.com/";
+    //public final String DOMAIN = "http://corporacion-peruana.test/";
     private WebDriver webDriver;
 
     @BeforeClass
